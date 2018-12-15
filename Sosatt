@@ -1,0 +1,5 @@
+open System
+
+let a= IO.File.ReadAllLines "input.txt"
+
+let a1 = a.[0] |> Seq.map (fun x -> int (string x)) |> Seq.sum |> printfn "%i"
