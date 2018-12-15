@@ -1,13 +1,7 @@
-open System
-
-let la = IO.File.ReadAllLines "input.txt"
 let chart c = int <| c.ToString()
 
-let result = 
-    la.[0]
-    |>List.ofSeq
-    |>List.map chart
-    |>List.rev
+
+    
 
 let rec next n =
     match n with
@@ -19,8 +13,10 @@ let rec next n =
 
 let folder acc d = d.ToString() + acc
 let r2 =
-    result
+    stdin.ReadLine()
+    |>List.ofSeq
+    |>List.map chart
+    |>List.rev
     |>next
     |>List.fold folder ""
-
-printfn "%s" r2
+    |>printfn "%s"
