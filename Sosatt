@@ -1,5 +1,26 @@
 open System
 
-let a= IO.File.ReadAllLines "input.txt"
+let la = IO.File.ReadAllLines "input.txt"
+let chart c = int <| c.ToString()
 
-let a1 = a.[0] |> Seq.map (fun x -> int (string x)) |> Seq.sum |> printfn "%i"
+let result = 
+    la.[0]
+    |>List.ofSeq
+    |>List.map chart
+    |>List.rev
+
+let rec next n =
+    match n with
+    | 9 :: t -> 0 :: next t
+    | h :: t -> h + 1 :: t
+    | [] -> [1]
+
+
+
+let folder acc d = d.ToString() + acc
+let r2 =
+    result
+    |>next
+    |>List.fold folder ""
+
+printfn "%s" r2
